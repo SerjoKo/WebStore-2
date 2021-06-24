@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebStore.Domain.Entitys.Identity;
-using WebStore.ViewModels;
+using WebStore.Domain.ViewModels;
 
 namespace WebStore.Controllers
 {
@@ -18,7 +18,7 @@ namespace WebStore.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        
+
         #region Регистрация
         [AllowAnonymous]
         public IActionResult Register() => View(new RegisterUserViewModel());
@@ -54,9 +54,9 @@ namespace WebStore.Controllers
         #endregion
 
         [AllowAnonymous]
-        public IActionResult Login(string ReturnUrl) => 
+        public IActionResult Login(string ReturnUrl) =>
             View(new LoginViewModel { ReturnUrl = ReturnUrl });
-        
+
         [HttpPost, ValidateAntiForgeryToken, AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel Model)
         {
@@ -70,7 +70,7 @@ namespace WebStore.Controllers
                 true
 #endif
                 );
-            
+
             if (login_result.Succeeded)
             {
                 //return Redirect(Model.ReturnUrl); НЕ БЕЗОПАСНО

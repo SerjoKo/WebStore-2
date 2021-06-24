@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using WebStore.Domain;
+using WebStore.Domain.ViewModels;
+using WebStore.Inerfaces.Services;
 using WebStore.Inftastructure.Mapping;
-using WebStore.Servicess.Interfaces;
-using WebStore.ViewModels;
 
 namespace WebStore.Controllers
 {
@@ -25,7 +25,7 @@ namespace WebStore.Controllers
             };
 
             var products = _ProductData.GetProducts(filter);
-            
+
             return View(new CatalogViewModel
             {
                 BrandId = BrandId,
@@ -35,7 +35,7 @@ namespace WebStore.Controllers
             });
         }
 
-        public IActionResult Details (int Id)
+        public IActionResult Details(int Id)
         {
             var product = _ProductData.GetProductById(Id);
 

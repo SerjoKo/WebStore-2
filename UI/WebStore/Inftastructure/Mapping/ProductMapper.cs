@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebStore.Domain.Entitys;
-using WebStore.ViewModels;
+using WebStore.Domain.ViewModels;
 
 namespace WebStore.Inftastructure.Mapping
 {
@@ -22,7 +20,7 @@ namespace WebStore.Inftastructure.Mapping
             };
         }
 
-        public static IEnumerable<ProductViewModel> 
+        public static IEnumerable<ProductViewModel>
             ToView(this IEnumerable<Product> products) => products.Select(ToView);
     }
 }

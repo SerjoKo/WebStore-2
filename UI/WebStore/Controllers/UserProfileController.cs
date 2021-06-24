@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using WebStore.Services.Interfaces;
-using WebStore.ViewModels;
+using WebStore.Domain.ViewModels;
+using WebStore.Inerfaces.Services;
 
 namespace WebStore.Controllers
 {
@@ -17,12 +17,12 @@ namespace WebStore.Controllers
             var order = await OrderService.GetUserOrder(User.Identity!.Name);
 
             return View(order.Select(o => new UserOrderViewModel
-            { 
-              Id = o.Id,
-              Name = o.Name,
-              Phone = o.Phone,
-              Adress = o.Adress,
-              TotalPrice = o.Items.Sum(item => item.TotalItemPrice)
+            {
+                Id = o.Id,
+                Name = o.Name,
+                Phone = o.Phone,
+                Adress = o.Adress,
+                TotalPrice = o.Items.Sum(item => item.TotalItemPrice)
             }));
         }
     }

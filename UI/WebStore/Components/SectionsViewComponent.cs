@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using WebStore.Servicess.Interfaces;
-using WebStore.ViewModels;
 using System.Collections.Generic;
-
+using System.Linq;
+using WebStore.Domain.ViewModels;
+using WebStore.Inerfaces.Services;
 
 namespace WebStore.Components
 {
@@ -39,7 +38,7 @@ namespace WebStore.Components
                 foreach (var child_section in childs)
                 {
                     parent_section.ChildSection.Add(new SectionViewModel
-                    { 
+                    {
                         Id = child_section.Id,
                         Name = child_section.Name,
                         Order = child_section.Order,
@@ -47,7 +46,7 @@ namespace WebStore.Components
                     });
                 }
 
-                parent_section.ChildSection.Sort((a, b) => 
+                parent_section.ChildSection.Sort((a, b) =>
                        Comparer<int>.Default.Compare(a.Order, b.Order));
             }
             parent_sections_views.Sort((a, b) =>
