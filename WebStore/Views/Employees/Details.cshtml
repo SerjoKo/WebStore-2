@@ -1,0 +1,56 @@
+﻿@model WebStore.Domain.Entitys.Employee
+@using WebStore.Domain.Entitys.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Карточка";
+}
+<div class="container">
+    <h1>Информация о сотруднике</h1>
+
+    <div>
+        <h4>Сотрудник</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SurName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SurName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MiddleName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @* @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        <a asp-action="Index">К списку сотрудников</a>
+        @if (User.IsInRole(Role.Administrators))
+        {
+            <a asp-action="Edet" asp-route-id="@Model.Id">Редактирование</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="text-danger">Удаление</a>
+        }
+    </div>
+</div>

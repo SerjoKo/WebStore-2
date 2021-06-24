@@ -1,0 +1,36 @@
+﻿@*@using WebStore.Servicess.Interfaces*@
+@{
+    ViewBag.Title = "Магазин";
+}
+
+@*@using WebStore.ViewModels
+    @inject IProductData ProductData
+    @{
+        var products = ProductData
+            .GetProducts()
+            .Take(6)
+            .Select(p => new ProductViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price,
+                ImgUrl = p.ImgUrl,
+            });
+    }*@
+<partial name="Partial/_Slider" />
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <partial name="Partial/_Left-sidebar" />
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                @*<partial name="Partial/_Features_items" model=products />*@
+                <partial name="Partial/_Features_items" model="@ViewBag.Products" />
+                <partial name="Partial/_Category-tab" />
+                <partial name="Partial/_Recommended_items" />
+            </div>
+        </div>
+    </div>
+</section>

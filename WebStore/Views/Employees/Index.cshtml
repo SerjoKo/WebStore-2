@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebStore.Domain.Entitys.Employee>
+@using Domain.Entitys.Identity
+
+<!DOCTYPE html>
+
+<div class="container">
+    <p>
+        @if (User.IsInRole(Role.Administrators))
+        {
+            <a asp-action="Create" class="btn btn-primary">Создать Create</a> <br />
+            <a asp-action="Edit" class="btn btn-primary">Создатть Edit</a>
+        }
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Возраст</th>
+                <th></th>
+                @if (User.IsInRole(Role.Administrators))
+                {
+                    <th></th>
+                    <th></th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+            <tr>
+                <td>
+                </td>
+                <td>@employee.SurName</td>
+                <td>@employee.Name</td>
+                <td>@employee.MiddleName</td>
+                <td>@employee.Age</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@employee.Id" title="Детальная информация">
+                        <i class="fa-info"></i>
+                    </a>
+                </td>
+              
+                @if (User.IsInRole(Role.Administrators))
+                 {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@employee.Id" title="Редактирование">
+                            <i class="fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <form asp-action="DeleteConfirmed" asp-route-id="@employee.Id">
+                            <button type="submit"></button>
+                            <i class="fa fa-trash-o text-danger"></i>
+                        </form>
+                    </td>
+                 }
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        <a asp-controller="Home" asp-action="Index">На главную</a>
+    </p>
+</div>
