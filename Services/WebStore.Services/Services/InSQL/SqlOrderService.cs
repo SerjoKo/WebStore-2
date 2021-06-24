@@ -10,7 +10,7 @@ using WebStore.Domain.Entitys.Orders;
 using WebStore.Domain.ViewModels;
 using WebStore.Inerfaces.Services;
 
-namespace WebStore.Servicess.InSQL
+namespace WebStore.Services.Services.InSQL
 {
     public class SqlOrderService : IOrderService
     {
@@ -71,7 +71,7 @@ namespace WebStore.Servicess.InSQL
            .Include(order => order.Items)
            .FirstOrDefaultAsync(order => order.Id == id);
 
-        public async Task<IEnumerable<Order>> GetUserOrder(string UserName) => 
+        public async Task<IEnumerable<Order>> GetUserOrder(string UserName) =>
             await _db.Orders
            .Include(order => order.User)
            .Include(order => order.Items)

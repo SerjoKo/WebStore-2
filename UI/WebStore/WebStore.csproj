@@ -27,6 +27,7 @@
     <ProjectReference Include="..\..\Services\WebStore.DAL.SqLite\WebStore.DAL.SqLite\WebStore.DAL.SqLite.csproj" />
     <ProjectReference Include="..\..\Services\WebStore.DAL\WebStore.DAL.csproj" />
     <ProjectReference Include="..\..\Services\WebStore.Inerfaces\WebStore.Inerfaces.csproj" />
+    <ProjectReference Include="..\..\Services\WebStore.Services\WebStore.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 using WebStore.Inerfaces.Services;
-using WebStore.Inftastructure.Mapping;
+using WebStore.Services.Mapping;
 
 namespace WebStore.Controllers
 {

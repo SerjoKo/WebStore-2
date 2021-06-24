@@ -3,7 +3,7 @@ using System.Linq;
 using WebStore.Domain.Entitys;
 using WebStore.Domain.ViewModels;
 
-namespace WebStore.Inftastructure.Mapping
+namespace WebStore.Services.Mapping
 {
     public static class ProductMapper
     {

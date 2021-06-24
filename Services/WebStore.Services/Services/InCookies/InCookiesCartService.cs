@@ -1,16 +1,14 @@
-﻿using System.Linq;
-
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
+﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using System.Linq;
 using WebStore.Domain;
 using WebStore.Domain.Entitys;
 using WebStore.Domain.ViewModels;
 using WebStore.Inerfaces.Services;
-using WebStore.Inftastructure.Mapping;
+using WebStore.Services.Mapping;
 using WebStore.Servicess.Interfaces;
 
-namespace WebStore.Servicess.InCookies
+namespace WebStore.Services.Servicess.InCookies
 {
     public class InCookiesCartService : ICartService
     {
@@ -80,7 +78,7 @@ namespace WebStore.Servicess.InCookies
 
             Cart = cart;
         }
-       
+
         public void Decrement(int Id)
         {
             var cart = Cart;
@@ -88,7 +86,7 @@ namespace WebStore.Servicess.InCookies
             var item = cart.Items.FirstOrDefault(p => p.ProductId == Id);
 
             if (item is null) return;
-            
+
             if (item.Quantitie > 0)
                 item.Quantitie--;
 
@@ -113,7 +111,7 @@ namespace WebStore.Servicess.InCookies
                    .Where(item => products_views.ContainsKey(item.ProductId))
                    .Select(item => (products_views[item.ProductId], item.Quantitie))
             };
-        }  
+        }
 
         public void Remove(int Id)
         {

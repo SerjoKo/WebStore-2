@@ -2,14 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebStore.DAL.Context.WebStore.DAL.Context;
+using WebStore.Data;
 using WebStore.Domain.Entitys.Identity;
 
-namespace WebStore.Data
+namespace WebStore.Services.Data
 {
     public class WSDBInitializer
     {

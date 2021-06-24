@@ -1,20 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebStore.DAL.Context.WebStore.DAL.Context;
 using WebStore.Domain.Entitys;
 using WebStore.Inerfaces.Services;
 
-namespace WebStore.Servicess.InSQL
+namespace WebStore.Services.Services.InSQL
 {
     public class SqlEmployeesData : IEmployeesData
     {
         private readonly WebStoreDB _db;
 
         public SqlEmployeesData(WebStoreDB db) => _db = db;
-        
+
         public int Add(Employee employee)
         {
             if (employee is null)
