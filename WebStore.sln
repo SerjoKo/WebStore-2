@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Services", "Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.WebApi", "Services\WebStore.WebApi\WebStore.WebApi.csproj", "{CBE09DF4-0512-433A-9368-7B7970C442D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.WebApi.lients", "Services\WebStore.WebApi.lients\WebStore.WebApi.lients.csproj", "{59734703-93DB-4AB5-8713-603CC2DD44F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.WebApi.Clients", "Services\WebStore.WebApi.lients\WebStore.WebApi.Clients.csproj", "{59734703-93DB-4AB5-8713-603CC2DD44F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

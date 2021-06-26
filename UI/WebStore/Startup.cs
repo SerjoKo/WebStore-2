@@ -10,12 +10,14 @@ using System;
 using WebStore.DAL.Context.WebStore.DAL.Context;
 using WebStore.Domain.Entitys.Identity;
 using WebStore.Inerfaces.Services;
+using WebStore.Inerfaces.TestAPI;
 using WebStore.Inftastructure.MidleWare;
 using WebStore.Services.Data;
 using WebStore.Services.Services.InMemory;
 using WebStore.Services.Services.InSQL;
 using WebStore.Services.Servicess.InCookies;
 using WebStore.Servicess.Interfaces;
+using WebStore.WebApi.lients.Values;
 
 namespace WebStore
 {
@@ -104,6 +106,9 @@ namespace WebStore
                 services.AddScoped<IProductData, SqlProductData>();
             else
                 services.AddSingleton<IProductData, InMemoryProductData>();
+
+            services.AddHttpClient<IValuesService, ValuesClient>
+                (client => client.BaseAddress = new Uri(Configuration["WebApi"]));
 
             services.AddScoped<IOrderService, SqlOrderService>();
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();

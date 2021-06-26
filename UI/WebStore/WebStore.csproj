@@ -28,6 +28,7 @@
     <ProjectReference Include="..\..\Services\WebStore.DAL\WebStore.DAL.csproj" />
     <ProjectReference Include="..\..\Services\WebStore.Inerfaces\WebStore.Inerfaces.csproj" />
     <ProjectReference Include="..\..\Services\WebStore.Services\WebStore.Services.csproj" />
+    <ProjectReference Include="..\..\Services\WebStore.WebApi.lients\WebStore.WebApi.Clients.csproj" />
   </ItemGroup>
 
   <ItemGroup>
