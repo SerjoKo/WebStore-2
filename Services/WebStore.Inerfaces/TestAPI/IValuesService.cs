@@ -8,10 +8,10 @@ namespace WebStore.Inerfaces.TestAPI
 
         string GetByIndex(int index);
 
-        string Add(string value);
+        void Add(string value);
 
         void Edit(int index, string str);
 
-        void Delete(int index);
+        bool Delete(int index);
     }
 }
