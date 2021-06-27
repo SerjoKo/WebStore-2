@@ -7,6 +7,7 @@ using WebStore.Inerfaces.Services;
 
 namespace WebStore.Services.Services.InMemory
 {
+    [Obsolete]
     public class InMemoryEmployeesData : IEmployeesData
     {
 

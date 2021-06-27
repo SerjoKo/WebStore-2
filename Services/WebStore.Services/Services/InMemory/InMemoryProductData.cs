@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WebStore.Data;
 using WebStore.Domain;
@@ -7,6 +8,7 @@ using WebStore.Inerfaces.Services;
 
 namespace WebStore.Services.Services.InMemory
 {
+    [Obsolete]
     public class InMemoryProductData : IProductData
     {
         public IEnumerable<Brand> GetBrands()
