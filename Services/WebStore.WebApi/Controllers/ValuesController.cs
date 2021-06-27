@@ -4,8 +4,9 @@ using System.Linq;
 
 namespace WebStore.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
+    [Route("api/values")]
     public class ValuesController : ControllerBase
     {
         private static List<string> _Values = Enumerable
@@ -39,7 +40,6 @@ namespace WebStore.WebApi.Controllers
         {
             _Values.Add(str);
             return Ok();
-            //return CreatedAtAction(nameof(GetByIndex), new { index = __Values.Count - 1});
         }
 
         [HttpPut("{index}")]

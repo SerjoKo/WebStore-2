@@ -9,7 +9,7 @@ namespace WebStore.WebApi.lients.Values
 {
     public class ValuesClient : BaseClient, IValuesService
     {
-        public ValuesClient(HttpClient Client) : base(Client, "api/[controller]")
+        public ValuesClient(HttpClient Client) : base(Client, "api/values")
         {}
 
         public void Add(string value)
@@ -35,6 +35,7 @@ namespace WebStore.WebApi.lients.Values
             var response = Http.GetAsync(Address).Result;
             if (response.IsSuccessStatusCode)
                 return response.Content.ReadFromJsonAsync<IEnumerable<string>>().Result;
+
             return Enumerable.Empty<string>();
         }
 
