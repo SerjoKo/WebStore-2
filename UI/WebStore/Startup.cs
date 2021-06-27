@@ -32,10 +32,7 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddScoped<ITestService, TestService>();
-            //services.AddScoped<IPrinter, DebugPrinter>();
-
-            var database_name = Configuration["Database"];
+           var database_name = Configuration["Database"];
 
             switch (database_name)
             {
@@ -51,10 +48,6 @@ namespace WebStore
                             o => o.MigrationsAssembly("WebStore.DAL.SqLite")));
                     break;
             }
-
-            //services.AddDbContext<WebStoreDB>(opt =>
-            //    opt.UseSqlServer(
-            //        Configuration.GetConnectionString("WSDBSQL")));
 
             services.AddTransient<WSDBInitializer>();
 
@@ -92,42 +85,21 @@ namespace WebStore
                 opt.SlidingExpiration = true;
             });
 
-            //services.AddDbContext<WebStoreDB>(opt => 
-            //    opt.UseSqlServer(Configuration.GetConnectionString("WSDBSQL")));
-
             services.AddScoped<IEmployeesData, SqlEmployeesData>();
-            //services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            // оставить на всякий случай
-            //services.AddSingleton<IProductData, InMemoryProductData>();
-            //services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<ICartService, InCookiesCartService>();
-
-            if (Configuration["ProductsDataSource"] == "db")
-                services.AddScoped<IProductData, SqlProductData>();
-            else
-                services.AddSingleton<IProductData, InMemoryProductData>();
-
+            services.AddScoped<IProductData, SqlProductData>();
+            services.AddScoped<IOrderService, SqlOrderService>();
+            
             services.AddHttpClient<IValuesService, ValuesClient>
                 (client => client.BaseAddress = new Uri(Configuration["WebApi"]));
 
-            services.AddScoped<IOrderService, SqlOrderService>();
-            //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
-
-            //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
-
-           
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
-            //var test_service = services.GetRequiredService<ITestService>();
-
-            //test_service.Test();
-
             using (var scope = services.CreateScope())
                 scope.ServiceProvider.GetRequiredService<WSDBInitializer>().Initialize();
-                
 
             if (env.IsDevelopment())
             {
@@ -145,63 +117,20 @@ namespace WebStore
 
             app.UseWelcomePage("/WelcomePage");
 
-            //var greetings = Configuration["Greetings"];
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/greetings", async context =>
                 {
-                    //await context.Response.WriteAsync(greetings);
                     await context.Response.WriteAsync(Configuration["Greetings"]);
                 });
-
 
                 endpoints.MapControllerRoute(
                     name: "areas", 
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
-
-    //interface ITestService
-    //{
-    //    void Test();
-    //}
-
-    //class TestService : ITestService
-    //{
-    //    private IPrinter _Printer;
-
-    //    public TestService(IPrinter Printer)
-    //    {
-    //        _Printer = Printer;
-    //    }
-
-    //    public void Test()
-    //    {
-    //        _Printer.Printer("Запуск теста");
-    //        //Debug.WriteLine("Запуск теста");
-    //    }
-    //}
-
-    //interface IPrinter
-    //{
-    //    void Printer(string str);
-    //}
-
-    //class DebugPrinter : IPrinter
-    //{
-    //    public DebugPrinter()
-    //    {
-
-    //    }
-
-    //    public void Printer(string str)
-    //    {
-    //        Debug.WriteLine(str);
-    //    }
-    //}
 }
