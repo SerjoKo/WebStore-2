@@ -13,7 +13,6 @@ using WebStore.Inerfaces.Services;
 using WebStore.Inerfaces.TestAPI;
 using WebStore.Inftastructure.MidleWare;
 using WebStore.Services.Data;
-using WebStore.Services.Services.InMemory;
 using WebStore.Services.Services.InSQL;
 using WebStore.Services.Servicess.InCookies;
 using WebStore.Servicess.Interfaces;
@@ -32,7 +31,7 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-           var database_name = Configuration["Database"];
+            var database_name = Configuration["Database"];
 
             switch (database_name)
             {
@@ -55,7 +54,8 @@ namespace WebStore
                 .AddEntityFrameworkStores<WebStoreDB>()
                 .AddDefaultTokenProviders();
 
-            services.Configure<IdentityOptions>(opt => {
+            services.Configure<IdentityOptions>(opt =>
+            {
 #if DEBUG
                 opt.Password.RequireDigit = false;
                 opt.Password.RequiredLength = 3;
@@ -89,7 +89,7 @@ namespace WebStore
             services.AddScoped<ICartService, InCookiesCartService>();
             services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<IOrderService, SqlOrderService>();
-            
+
             services.AddHttpClient<IValuesService, ValuesClient>
                 (client => client.BaseAddress = new Uri(Configuration["WebApi"]));
 
@@ -125,7 +125,7 @@ namespace WebStore
                 });
 
                 endpoints.MapControllerRoute(
-                    name: "areas", 
+                    name: "areas",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     "default",

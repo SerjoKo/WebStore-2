@@ -11,7 +11,6 @@ using WebStore.DAL.Context.WebStore.DAL.Context;
 using WebStore.Domain.Entitys.Identity;
 using WebStore.Inerfaces.Services;
 using WebStore.Services.Data;
-using WebStore.Services.Services.InMemory;
 using WebStore.Services.Services.InSQL;
 using WebStore.Services.Servicess.InCookies;
 using WebStore.Servicess.Interfaces;
@@ -53,7 +52,8 @@ namespace WebStore.WebApi
                 .AddEntityFrameworkStores<WebStoreDB>()
                 .AddDefaultTokenProviders();
 
-            services.Configure<IdentityOptions>(opt => {
+            services.Configure<IdentityOptions>(opt =>
+            {
 #if DEBUG
                 opt.Password.RequireDigit = false;
                 opt.Password.RequiredLength = 3;

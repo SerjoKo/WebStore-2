@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using WebStore.Domain.Entitys.Base;
 using WebStore.Domain.Entitys.Base.Interfaces;
 
@@ -24,7 +19,7 @@ namespace WebStore.Domain.Entitys
         public Brand Brand { get; set; }
 
         public string ImgUrl { get; set; }
-        
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
     }

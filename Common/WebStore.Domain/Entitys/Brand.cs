@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using WebStore.Domain.Entitys.Base;
 using WebStore.Domain.Entitys.Base.Interfaces;
 

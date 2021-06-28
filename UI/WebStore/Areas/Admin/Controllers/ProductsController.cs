@@ -15,13 +15,13 @@ namespace WebStore.Areas.Admin.Controllers
         {
             _ProductData = ProductData;
         }
-        
+
         public IActionResult Index()
         {
             return View(_ProductData.GetProducts());
         }
 
-        public IActionResult Edit(int id) => 
+        public IActionResult Edit(int id) =>
             _ProductData.GetProductById(id) is { } product
             ? View(product)
             : NotFound();

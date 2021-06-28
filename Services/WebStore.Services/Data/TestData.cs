@@ -59,7 +59,7 @@ namespace WebStore.Data
 
         public static IEnumerable<Product> Products { get; } = new[]
         {
-            new Product{ Id = 1, Name = "Easy Polo Black Edition", Price = 1025, 
+            new Product{ Id = 1, Name = "Easy Polo Black Edition", Price = 1025,
                 ImgUrl = "product1.jpg", Order = 0, SectionId = 2, BrandId = 1},
             new Product{ Id = 2, Name = "Easy Polo Black Edition", Price = 1025,
                 ImgUrl = "product2.jpg", Order = 1, SectionId = 2, BrandId = 1},
@@ -67,9 +67,9 @@ namespace WebStore.Data
                 ImgUrl = "product3.jpg", Order = 2, SectionId = 2, BrandId = 1},
             new Product{ Id = 4, Name = "Easy Polo Black Edition", Price = 1025,
                 ImgUrl = "product4.jpg", Order = 3, SectionId = 2, BrandId = 1},
-            new Product{ Id = 5, Name = "Easy Polo Black Edition", Price = 1025, 
+            new Product{ Id = 5, Name = "Easy Polo Black Edition", Price = 1025,
                 ImgUrl = "product5.jpg", Order = 4, SectionId = 2, BrandId = 2},
-            new Product{ Id = 6, Name = "Easy Polo Black Edition", Price = 1025, 
+            new Product{ Id = 6, Name = "Easy Polo Black Edition", Price = 1025,
                 ImgUrl = "product6.jpg", Order = 5, SectionId = 2, BrandId = 2},
             new Product{ Id = 7, Name = "Easy Polo Black Edition", Price = 1025,
                 ImgUrl = "product7.jpg", Order = 6, SectionId = 2, BrandId = 2},

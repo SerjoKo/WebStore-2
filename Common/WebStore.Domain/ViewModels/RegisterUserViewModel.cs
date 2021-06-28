@@ -5,7 +5,7 @@ namespace WebStore.Domain.ViewModels
     public class RegisterUserViewModel
     {
         [Required]
-        [Display(Name ="Имя пользователя")]
+        [Display(Name = "Имя пользователя")]
         public string UserName { get; set; }
 
         [Required]

@@ -10,7 +10,7 @@ namespace WebStore.WebApi.lients.Values
     public class ValuesClient : BaseClient, IValuesService
     {
         public ValuesClient(HttpClient Client) : base(Client, "api/values")
-        {}
+        { }
 
         public void Add(string value)
         {
@@ -20,13 +20,13 @@ namespace WebStore.WebApi.lients.Values
 
         public bool Delete(int index)
         {
-            var response=Http.DeleteAsync($"{Address}/{index}").Result;
+            var response = Http.DeleteAsync($"{Address}/{index}").Result;
             return response.IsSuccessStatusCode;
         }
 
         public void Edit(int index, string str)
         {
-            var response=Http.PutAsJsonAsync($"{Address}/{index}", str).Result;
+            var response = Http.PutAsJsonAsync($"{Address}/{index}", str).Result;
             response.EnsureSuccessStatusCode();
         }
 
