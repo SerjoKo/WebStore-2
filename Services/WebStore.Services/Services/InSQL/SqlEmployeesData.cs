@@ -54,7 +54,7 @@ namespace WebStore.Services.Services.InSQL
 
         public Employee Get(int id)
         {
-            return _db.Employees.SingleOrDefault(employee => employee.Id == 0);
+            return _db.Employees.SingleOrDefault(employee => employee.Id == id);
         }
 
         public IEnumerable<Employee> GetAll()
