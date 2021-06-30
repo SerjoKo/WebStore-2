@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using WebStore.Domain;
 using WebStore.Domain.Entitys;
 using WebStore.Inerfaces;
@@ -16,32 +17,35 @@ namespace WebStore.WebApi.Clients.Products
 
         public Brand GetBrand(int id)
         {
-            throw new System.NotImplementedException();
+            return Get<Brand>($"{Address}/brand{id}");
         }
 
         public IEnumerable<Brand> GetBrands()
         {
-            throw new System.NotImplementedException();
+            return Get<IEnumerable<Brand>>($"{Address}/brandss");
         }
 
         public Product GetProductById(int id)
         {
-            throw new System.NotImplementedException();
+            return Get<Product>($"{Address}/product{id}");
         }
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
-            throw new System.NotImplementedException();
+            var reesponse = Post(Address, Filter);
+            var product = reesponse.Content.ReadFromJsonAsync<IEnumerable<Product>>().Result;
+
+            return product;
         }
 
         public Section GetSection(int id)
         {
-            throw new System.NotImplementedException();
+            return Get<Section>($"{Address}/section{id}");
         }
 
         public IEnumerable<Section> GetSections()
         {
-            throw new System.NotImplementedException();
+            return Get<IEnumerable<Section>>($"{Address}/sections");
         }
     }
 }
