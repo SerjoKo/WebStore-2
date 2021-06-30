@@ -38,5 +38,15 @@ namespace WebStore.Services.Services.InMemory
         {
             return TestData.Products.SingleOrDefault(p => p.Id == Id);
         }
+
+        public Section GetSection(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Brand GetBrand(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

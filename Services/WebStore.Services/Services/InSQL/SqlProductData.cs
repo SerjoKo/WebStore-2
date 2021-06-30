@@ -48,5 +48,15 @@ namespace WebStore.Services.Services.InSQL
                 .Include(p => p.Section)
                 .SingleOrDefault(p => p.Id == Id);
         }
+
+        public Section GetSection(int id)
+        {
+            return _db.Sections.Include(s => s.Products).FirstOrDefault(s => s.Id == id);
+        }
+
+        public Brand GetBrand(int id)
+        {
+            return _db.Brands.Include(b => b.Products).FirstOrDefault(b => b.Id == id);
+        }
     }
 }
