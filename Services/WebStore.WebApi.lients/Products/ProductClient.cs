@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Json;
 using WebStore.Domain;
+using WebStore.Domain.DTO;
 using WebStore.Domain.Entitys;
 using WebStore.Inerfaces;
 using WebStore.Inerfaces.Services;
@@ -17,35 +18,35 @@ namespace WebStore.WebApi.Clients.Products
 
         public Brand GetBrand(int id)
         {
-            return Get<Brand>($"{Address}/brand{id}");
+            return Get<BrandDTO>($"{Address}/brand{id}").FromDTO();
         }
 
         public IEnumerable<Brand> GetBrands()
         {
-            return Get<IEnumerable<Brand>>($"{Address}/brandss");
+            return Get<IEnumerable<BrandDTO>>($"{Address}/brandss").FromDTO();
         }
 
         public Product GetProductById(int id)
         {
-            return Get<Product>($"{Address}/product{id}");
+            return Get<ProductDTO>($"{Address}/product{id}").FromDTO();
         }
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
             var reesponse = Post(Address, Filter);
-            var product = reesponse.Content.ReadFromJsonAsync<IEnumerable<Product>>().Result;
+            var product = reesponse.Content.ReadFromJsonAsync<IEnumerable<ProductDTO>>().Result;
 
-            return product;
+            return product.FromDTO();
         }
 
         public Section GetSection(int id)
         {
-            return Get<Section>($"{Address}/section{id}");
+            return Get<SectionDTO>($"{Address}/section{id}").FromDTO();
         }
 
         public IEnumerable<Section> GetSections()
         {
-            return Get<IEnumerable<Section>>($"{Address}/sections");
+            return Get<IEnumerable<SectionDTO>>($"{Address}/sections").FromDTO();
         }
     }
 }
