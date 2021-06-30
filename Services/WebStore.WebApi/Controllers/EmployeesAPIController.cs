@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain.Entitys;
+using WebStore.Inerfaces;
 using WebStore.Inerfaces.Services;
 
 namespace WebStore.WebApi.Controllers
 {
     //[Route("api/[controller]")]
-    [Route("api/employees")]
+    [Route(WebAPIAddress.Employees)]
     [ApiController]
     public class EmployeesAPIController : ControllerBase
     {
