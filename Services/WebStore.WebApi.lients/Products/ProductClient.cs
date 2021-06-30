@@ -23,7 +23,7 @@ namespace WebStore.WebApi.Clients.Products
 
         public IEnumerable<Brand> GetBrands()
         {
-            return Get<IEnumerable<BrandDTO>>($"{Address}/brandss").FromDTO();
+            return Get<IEnumerable<BrandDTO>>($"{Address}/brands").FromDTO();
         }
 
         public Product GetProductById(int id)
@@ -33,7 +33,7 @@ namespace WebStore.WebApi.Clients.Products
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
-            var reesponse = Post(Address, Filter);
+            var reesponse = Post(Address, Filter ?? new ProductFilter());
             var product = reesponse.Content.ReadFromJsonAsync<IEnumerable<ProductDTO>>().Result;
 
             return product.FromDTO();
