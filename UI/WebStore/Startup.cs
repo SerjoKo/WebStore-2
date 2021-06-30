@@ -16,6 +16,8 @@ using WebStore.Services.Data;
 using WebStore.Services.Services.InSQL;
 using WebStore.Services.Servicess.InCookies;
 using WebStore.Servicess.Interfaces;
+using WebStore.WebApi.Clients.Employees;
+using WebStore.WebApi.Clients.Products;
 using WebStore.WebApi.lients.Values;
 
 namespace WebStore
@@ -85,12 +87,18 @@ namespace WebStore
                 opt.SlidingExpiration = true;
             });
 
-            services.AddScoped<IEmployeesData, SqlEmployeesData>();
+            //services.AddScoped<IEmployeesData, SqlEmployeesData>();
             services.AddScoped<ICartService, InCookiesCartService>();
-            services.AddScoped<IProductData, SqlProductData>();
+            //services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<IOrderService, SqlOrderService>();
 
             services.AddHttpClient<IValuesService, ValuesClient>
+                (client => client.BaseAddress = new Uri(Configuration["WebApi"]));
+
+            services.AddHttpClient<IEmployeesData, EmployeesClient>
+                (client => client.BaseAddress = new Uri(Configuration["WebApi"]));
+
+            services.AddHttpClient<IProductData, ProductClient>
                 (client => client.BaseAddress = new Uri(Configuration["WebApi"]));
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
