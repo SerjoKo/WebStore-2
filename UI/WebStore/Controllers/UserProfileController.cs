@@ -14,7 +14,7 @@ namespace WebStore.Controllers
 
         public async Task<IActionResult> Orders([FromServices] IOrderService OrderService)
         {
-            var order = await OrderService.GetUserOrder(User.Identity!.Name);
+            var order = await OrderService.GetUserOrders(User.Identity!.Name);
 
             return View(order.Select(o => new UserOrderViewModel
             {
