@@ -369,3 +369,4 @@ FodyWeavers.xsd
 **/wwwroot/css/site.css
 /WebStore/WebStore.db
 /WebStore/WebStore
+/UI/WebStore/wwwroot
